@@ -1,0 +1,74 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  /* Navbar Styles */
+  nav ul {
+    list-style-type: none;
+    background-color: #4CAF50;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+  }
+  
+  nav ul li {
+    display: inline;
+    position: relative;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    padding: 10px 15px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  nav ul li a:hover {
+    color: #FF6347; /* Changes color on hover */
+  }
+  
+  nav ul li input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333;
+    cursor: progress;
+  }
+  
+  /* Main Content Styles */
+  #main-content {
+    text-align: center;
+    margin: 50px 20px;
+  }
+  
+  h1 {
+    font-size: 36px;
+    color: #4CAF50;
+  }
+  
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  .logo {
+    height: 50px; /* Adjust height */
+    width: auto;  /* Maintain aspect ratio */
+    vertical-align: middle; /* Align logo with text */
+}

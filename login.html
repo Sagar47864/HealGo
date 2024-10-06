@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - HealGo</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Additional Styles for the Login Page */
+    .login-container {
+      width: 300px;
+      margin: 100px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f4f4f4;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .login-container label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .login-container button:hover {
+      background-color: #45a049;
+    }
+
+    .error {
+      color: red;
+      margin-bottom: 10px;
+    }
+
+    .password-container {
+      position: relative;
+    }
+
+    .password-container input {
+      width: calc(100% - 40px);
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+    }
+
+    .logout-btn {
+      width: 100px;
+      margin: 20px auto;
+      display: block;
+      padding: 10px;
+      text-align: center;
+      background-color: #ff6347;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="home.html"><img src="logo.png" alt="HealGo Logo" class="logo"></a></li>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="information.html">Information</a></li>
+      <li><a href="cure.html">Cure</a></li>
+      <li><a href="doctor-helpline.html">Doctor Helpline</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="login.html">Login/Logout</a></li>
+      <li><input type="text" placeholder="Search"><i class="search-icon"></i></li>
+    </ul>
+  </nav>
+
+  <section id="main-content">
+    <div class="login-container" id="login-container">
+      <h2>Login</h2>
+      <div class="error" id="error-message"></div>
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter Username">
+      
+      <label for="password">Password</label>
+      <div class="password-container">
+        <input type="password" id="password" placeholder="Enter Password">
+        <span class="toggle-password" onclick="togglePasswordVisibility()">👁️</span>
+      </div>
+      
+      <button onclick="login()">Login</button>
+    </div>
+
+    <div id="logout-container" style="display:none;">
+      <h2>Welcome, <span id="user-name"></span>!</h2>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </section>
+
+  <script>
+    // Toggle password visibility
+    function togglePasswordVisibility() {
+      const passwordField = document.getElementById('password');
+      const toggleIcon = document.querySelector('.toggle-password');
+
+      if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        toggleIcon.textContent = '🙈'; // Change to "hide" icon
+      } else {
+        passwordField.type = 'password';
+        toggleIcon.textContent = '👁️'; // Change back to "show" icon
+      }
+    }
+
+    // Simulate a basic login with username and password
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorMessage = document.getElementById('error-message');
+
+      // Clear previous error message
+      errorMessage.textContent = '';
+
+      // Simple validation
+      if (username === '' || password === '') {
+        errorMessage.textContent = 'Please fill in both fields.';
+        return;
+      }
+
+      // Example credentials (In real implementation, validate against backend)
+      const validUsername = 'admin';
+      const validPassword = 'password123';
+
+      if (username === validUsername && password === validPassword) {
+        // Simulate successful login
+        document.getElementById('login-container').style.display = 'none';
+        document.getElementById('logout-container').style.display = 'block';
+        document.getElementById('user-name').textContent = username;
+      } else {
+        errorMessage.textContent = 'Invalid username or password.';
+      }
+    }
+
+    // Logout functionality
+    function logout() {
+      document.getElementById('login-container').style.display = 'block';
+      document.getElementById('logout-container').style.display = 'none';
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+    }
+  </script>
+</body>
+</html>
